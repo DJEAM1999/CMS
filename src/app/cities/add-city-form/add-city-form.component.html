@@ -1,0 +1,12 @@
+
+<div class="container bg-secondary p-5 my-5 col justify-content-center">
+  <form #form="ngForm" (submit)="addCity(form)" class="justify-content-center"
+  [class.submitted]="service.formsubmitted" novalidate dir="rtl">
+    <h1 style="text-align: center;"> إضافة مدينة جديدة</h1>
+        <label for="city" class="text-light" ><h4>إسم المدينة</h4></label>
+        <div class="mx-1"></div>
+        <input class="form-control form-control-lg" placeholder="{{service.city.name}}" #name="ngModel" name="name"
+        [(ngModel)]="service.city.name" required >
+        <input type="submit" value="إضافة" class="py-1 m-2 btn btn-light rounded-0">
+    </form>
+</div>

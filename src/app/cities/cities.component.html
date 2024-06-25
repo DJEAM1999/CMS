@@ -1,0 +1,24 @@
+<div dir="rtl" style="margin-right: 20px;">
+  <h1>جميع المـدن</h1>
+
+<a routerLink="/add-city" class="btn btn-secondary" >اضافة مدينة</a>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">اسم المدينة</th>
+      <th scope="col">التحكم</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let city of service.cities">
+      <th scope="row"> {{city.cityId}} </th>
+      <td>{{city.name}}</td>
+      <td class="flex-grow-1 mouse-hover"> <i class="fa-solid fa-trash" style="margin-left: 15px;" (click)="onDelete(city.cityId)"></i>
+        <i class="fa-solid fa-pen-to-square" [routerLink]="['/edit-city',city.cityId]"></i> </td>
+    </tr>
+  </tbody>
+</table>
+
+</div>

@@ -1,0 +1,15 @@
+<div class="container bg-secondary p-5 my-5 col justify-content-center">
+  <form #form="ngForm" (submit)="onSubmit(form)" [class.submitted]="service.formsubmitted" novalidate dir="rtl">
+    <h1 style="text-align: center;"> إضافة عيــادة جديدة</h1>
+        <label for="city" class="text-light" ><h4>إسم العيادة</h4></label>
+        <div class="mx-1"></div>
+        <input class="form-control form-control-lg" placeholder="{{service.clinic.name}}" #name="ngModel" name="name"
+        [(ngModel)]="service.clinic.name" required>
+
+        <select [(ngModel)]="service.clinic.cityId" name="cityId">
+          <option value="">--Please choose an option--</option>
+          <option *ngFor="let city of service.cities" value="{{city.cityId}}">{{city.name}}</option>
+          </select>
+        <input type="submit" value="حفـــظ" class="py-1 m-2 btn btn-light rounded-0">
+    </form>
+</div>

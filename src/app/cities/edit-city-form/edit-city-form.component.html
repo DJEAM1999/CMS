@@ -1,0 +1,13 @@
+
+<div class="container bg-secondary p-5 my-5 col justify-content-center">
+    <form #form="ngForm" (submit)="updateCity(form)" class="justify-content-center" dir="rtl">
+      <h1>تعـديل اسم المدينة</h1>
+        <input type="hidden" name="cityId" [value]="service.city.cityId">
+        <label for="city" class="text-light"><h4>إسم المدينة</h4></label>
+        <div class="mx-1"></div>
+        <input class="form-control form-control-lg" placeholder="{{service.city.name}}" #name="ngModel" name="name"
+        [(ngModel)]="service.city.name" required>
+        <input class="btn btn-light mt-2" type="submit" value="حـفـــظ" >
+    </form>
+</div>
+

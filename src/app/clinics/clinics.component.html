@@ -1,0 +1,27 @@
+<div dir="rtl" style="margin-right: 20px;">
+  <h1>جميع العـيادات</h1>
+
+<a routerLink="/add-clinic" class="btn btn-secondary" >اضافة عيـادة</a>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">اسم العياده</th>
+      <th scope="col">مكـان العيادة </th>
+      <th scope="col">التحكم</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let clinic of service.clinics">
+      <th scope="row"> {{ clinic.clinicId }} </th>
+      <td>{{ clinic.name }}</td>
+      <td>{{ clinic.city.name }}</td>
+      <td class="flex-grow-1 mouse-hover"> <i class="fa-solid fa-trash" style="margin-left: 15px;"
+        (click)="onDelete(clinic.clinicId)"></i>
+      <i class="fa-solid fa-pen-to-square" [routerLink]="['/edit-clinic',clinic.clinicId]"></i> </td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
