@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { Clinic } from './clinic.model';
 import { City } from '../city/city.model';
+import { Observable } from 'rxjs';
 // import { NgForm } from '@angular/forms';
 
 @Injectable({
@@ -39,6 +40,10 @@ export class ClinicService {
     })
   }
 
+  getClinics(): Observable<Clinic[]> {
+    return this.http.get<Clinic[]>(this.url);
+  }
+  
   getClinic(clinicId: number){
     this.http.get(this.url + `/${clinicId}`)
     .subscribe({

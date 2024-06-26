@@ -8,6 +8,8 @@ import { ClinicFormComponent } from './clinics/edit-clinic/clinic-form.component
 import { Patient } from './shared/patient/patient.model';
 import { PatientsComponent } from './patient/patients.component';
 import { AddClinicComponent } from './clinics/add-clinic/add-clinic.component';
+import { PatientsClinicComponent } from './patients-clinic/patients-clinic.component';
+// import { PatientFormComponent } from './patient/patient-form/patient-form.component';
 
 const routes: Routes = [
   //City
@@ -20,6 +22,8 @@ const routes: Routes = [
   { path: 'edit-clinic/:id', component: ClinicFormComponent },
   //Patient
   { path: 'patient', component: PatientsComponent },
+  { path: 'patiensClinic/:patientName/:clinicName', component: PatientsClinicComponent },
+  // { path: 'add-patient', component: PatientFormComponent },
 ];
 
 @NgModule({

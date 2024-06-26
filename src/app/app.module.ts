@@ -17,6 +17,7 @@ import { RouterModule } from '@angular/router';
 import { AddClinicComponent } from './clinics/add-clinic/add-clinic.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +29,7 @@ import { AddClinicComponent } from './clinics/add-clinic/add-clinic.component';
     PatientsComponent,
     AddClinicComponent,
     AddClinicComponent,
+  
   ],
   imports: [
     BrowserModule,

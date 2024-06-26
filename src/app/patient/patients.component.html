@@ -1,17 +1,49 @@
 <div class="container align-self-center pt-5">
-    <div class="row m-3">
-      <h1 class="text-center text-primary">Clinics Management <br> System</h1>
-    </div>
+   
     <div class="bg-dark-subtle row p-2 rounded-2">
-      <div class="col-4">
+      <!-- <div class="col-4">
         <div class="btn btn-primary rounded-1 w-100"><a href="#" class="text-light text-decoration-none">Add New Patient</a></div>
-      </div>
-      <div class="col-8">
-        <form #form="ngForm" (submit)="onSubmit(form)" novalidate autocomplete="off">
-            <input type="text" class="p-1 rounded-1 w-100 border-0" placeholder="Search for a Patient..."
-                  [(ngModel)]="patientName" name="patientName">
-            <input type="submit" value="Search">
-        </form>
-      </div>
+      </div> -->
+     
+      <form #form="ngForm" (submit)="onSubmit(form)" novalidate autocomplete="off">
+        <div class="row">
+         <div class="col-5">
+          <input type="text" class="p-1 rounded-1 w-100 border-0" placeholder="Search for a Patient..."
+          [(ngModel)]="patientName" name="patientName">
+         </div>
+         <div class="col-4">
+          <!-- <select 
+            class="w-75" 
+            aria-label="Select Clinic" 
+            [(ngModel)]="clinicName" 
+            name="clinicName">
+            <option *ngFor="let clinic of clinics" [value]="clinic.name">{{clinic.name}}</option>
+          </select> -->
+         </div>
+         <div class="col-3">
+          <input  class="btn btn-primary rounded-1 w-100" type="submit" value="Search">
+         </div>
+        </div>  
+        
+      </form>
+    
     </div>
     </div>
+
+<div *ngIf="patientClinics">
+  <div *ngFor="let file of patientClinics" >
+    <p>{{file.patient.name}}</p>
+  </div>
+  <!-- <h1>{{patientClinics.patient.name}}</h1> -->
+  <!-- *********************** -->
+  
+  <!-- Complete All Details -->
+
+ <!-- *********************** -->
+</div>
+
+
+
+
+
+
