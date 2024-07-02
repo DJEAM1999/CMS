@@ -22,10 +22,14 @@ export class ClinicsComponent implements OnInit {
           this.service.refreshList()
           this.service.clinics = res as Clinic[];
           this.toastr.error('تم المسح بنجاح')
-          console.log('gggggg',res);
         },
         error: (err) => {
-          console.log(err);
+          if (err.status === 409) {
+            this.toastr.error('لا يمكن مسح العيادة لأنها تحتوي على ملفات مرضى مرتبطة.');
+          } else {
+            console.log(err.message);
+            this.toastr.error('حدث خطأ غير متوقع');
+          }
         },
       });
     }

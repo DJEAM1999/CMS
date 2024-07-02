@@ -29,6 +29,7 @@ export class AddClinicComponent {
   insertRecord(form: NgForm) {
     this.service.formsubmitted = true;
     if (form.valid) {
+      console.log(this.service.clinic)
       this.service.postClinic()
       .subscribe({
         next: (res) => {

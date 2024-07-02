@@ -1,0 +1,34 @@
+<!-- Button trigger modal -->
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">تعديل حالة الملف </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form [formGroup]="updatePatientsClinicForm"  (ngSubmit)="onSubmitUpdate()" novalidate dir="rtl">
+        <div class="modal-body p-3">
+               
+                <div class="form-group">
+                <div>
+                    <label for="fileStatus">حالة الملف</label>
+                    <select class="form-select" formControlName="fileStatus" id="fileStatus" name="fileStatus">
+                        <option *ngFor="let fileStatus of fileStatusLabelMap"
+                        [selected]="fileStatus.value === patientsClinic.fileStatus"
+                        value="{{fileStatus.value}}" >{{fileStatus.label}}</option>
+                    </select>
+                </div>
+                </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">تعديل</button>
+        </div>
+    </form>
+      </div>
+    </div>
+  </div>
+

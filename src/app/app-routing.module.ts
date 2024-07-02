@@ -9,6 +9,8 @@ import { Patient } from './shared/patient/patient.model';
 import { PatientsComponent } from './patient/patients.component';
 import { AddClinicComponent } from './clinics/add-clinic/add-clinic.component';
 import { PatientsClinicComponent } from './patients-clinic/patients-clinic.component';
+import { AddPatientComponent } from './patient/add-patient/add-patient.component';
+import { AddPatientsClinicComponent } from './patients-clinic/add-patients-clinic/add-patients-clinic.component';
 // import { PatientFormComponent } from './patient/patient-form/patient-form.component';
 
 const routes: Routes = [
@@ -22,7 +24,9 @@ const routes: Routes = [
   { path: 'edit-clinic/:id', component: ClinicFormComponent },
   //Patient
   { path: 'patient', component: PatientsComponent },
-  { path: 'patiensClinic/:patientName/:clinicName', component: PatientsClinicComponent },
+  { path: 'patient/add-patient', component: AddPatientComponent },
+  { path: 'patientsClinic/:patientId/:clinicId', component: PatientsClinicComponent },
+  { path: 'add-patients-clinic/:id', component: AddPatientsClinicComponent },
   // { path: 'add-patient', component: PatientFormComponent },
 ];
 

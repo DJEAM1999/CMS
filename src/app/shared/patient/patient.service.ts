@@ -10,30 +10,30 @@ import { PatientsClinic } from '../patients-clinic/patiens-clinic.model';
 })
 export class PatientService {
   constructor(private http: HttpClient) { }
-  url: string = environment.apiBaseUrl + '/PatientsClinics'
+  url: string = environment.apiBaseUrl + '/Patients'
   patient: Patient = new Patient()
 
   formsubmitted:boolean = false;
 
-  getPatientByNameAndClinic(name: string, clinicName: string): Observable<PatientsClinic | null> {
-    return this.http.get<PatientsClinic | null>(`${this.url}/by-name-and-clinic`, {
-      params: {
-        name: name,
-        clinicName: clinicName
-      }
-    });
-  }
-  getPatientByName(name: string): Observable<PatientsClinic[] | null> {
-    return this.http.get<PatientsClinic[] | null>(`${this.url}/by-name`, {
+ 
+  getPatientByName(name: string): Observable<Patient | null> {
+    return this.http.get<Patient | null>(`${this.url}/by-name`, {
       params: {
         name: name,
       }
     });
   }
 
-   postPatient() {
-    // console.log('Here is the Clinic: '+ this.url)
-    return this.http.post(this.url, this.patient)
+  postPatient(patient: Patient) {
+    return this.http.post(this.url, patient)
+  }
+
+  putPatient(patientId: number , patient: Patient) {
+    return this.http.put(this.url + `/${patientId}`, patient)
+  }
+
+    deletePatient(patientId: number) {
+    return this.http.delete(this.url + '/' + patientId)
   }
 
   // getClinic(clinicId: number){
@@ -59,7 +59,5 @@ export class PatientService {
   //   return this.http.post(this.url, this.clinic)
   // }
 
-  // deleteClinic(id: number) {
-  //   return this.http.delete(this.url + '/' + id)
-  // }
+
 }

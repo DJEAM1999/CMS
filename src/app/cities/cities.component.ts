@@ -26,7 +26,12 @@ export class CitiesComponent implements OnInit {
           this.toastr.error('تم المسح بنجاح');
         },
         error: (err) => {
-          console.log(err);
+          if (err.status === 409) {
+            this.toastr.error('لا يمكن مسح المدينة لأنها تحتوي على عيادات مرتبطة.');
+          } else {
+            console.log(err.message);
+            this.toastr.error('حدث خطأ غير متوقع');
+          }
         },
       });
     }

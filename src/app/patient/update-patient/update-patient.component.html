@@ -1,0 +1,35 @@
+
+<!-- Button trigger modal -->
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">تعديل بيانات مريض </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form [formGroup]="updatePatientForm"  (ngSubmit)="updatePatient()" novalidate dir="rtl">
+        <div class="modal-body p-3">
+            <h1 style="text-align: center;">  تعديل بيانات مريض  </h1>
+            <div class="form-group">
+              <label for="name" class="text-light"><h4>اسم المريض </h4></label>
+              <input class="form-control form-control-lg"  [value]="patient.name"  name="name"
+                formControlName="name" required>
+              <label for="nationalNo" class="text-light"><h4>الرقم الوطني</h4></label>
+              <input class="form-control form-control-lg" placeholder="أدخل الرقم الوطني" name="nationalNo"
+                formControlName="nationalNo" required>
+              <label for="passportNo" class="text-light"><h4>رقم جواز السفر</h4></label>
+              <input class="form-control form-control-lg" placeholder="أدخل رقم جواز السفر" name="passportNo"
+                formControlName="passportNo" required>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">تعديل</button>
+        </div>
+    </form>
+      </div>
+    </div>
+  </div>
+

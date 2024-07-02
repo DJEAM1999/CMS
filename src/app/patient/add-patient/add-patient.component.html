@@ -1,0 +1,25 @@
+<div class="container bg-secondary p-5 my-5 col justify-content-center">
+    <form [formGroup]="patientForm" (ngSubmit)="insertRecord()" novalidate dir="rtl">
+      <h1 style="text-align: center;">إضافة مريض جديد</h1>
+      <div class="form-group">
+        <label for="name" class="text-light"><h4>إسم المريض </h4></label>
+        <input class="form-control form-control-lg" placeholder="أدخل إسم المريض" name="name"
+          formControlName="name" required>
+        <label for="nationalNo" class="text-light"><h4>الرقم الوطني</h4></label>
+        <input class="form-control form-control-lg" placeholder="أدخل الرقم الوطني" name="nationalNo"
+          formControlName="nationalNo" required>
+        <label for="passportNo" class="text-light"><h4>رقم جواز السفر</h4></label>
+        <input class="form-control form-control-lg" placeholder="أدخل رقم جواز السفر" name="passportNo"
+          formControlName="passportNo" required>
+        <!-- <div>
+          <select [(ngModel)]="service.patient." name="cityId">
+            <option value="">--Please choose an option--</option>
+            <option *ngFor="let city of service.cities"
+            value="{{city.cityId}}">{{city.name}}</option>
+          </select>
+        </div> -->
+      </div>
+      <input type="submit" value="إضافة" class="py-1 m-2 btn btn-light rounded-0">
+    </form>
+  </div>
+  

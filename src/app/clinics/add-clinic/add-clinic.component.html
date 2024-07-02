@@ -11,7 +11,7 @@
         <select [(ngModel)]="service.clinic.cityId" name="cityId">
           <option value="">--Please choose an option--</option>
           <option *ngFor="let city of service.cities"
-          value="{{city.cityId}}">{{city.name}}</option>
+          value="{{city.cityId}}"> {{city.cityId}} {{city.name}}</option>
         </select>
       </div>
     </div>

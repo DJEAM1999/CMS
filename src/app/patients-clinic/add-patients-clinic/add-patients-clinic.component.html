@@ -1,0 +1,18 @@
+<div class="container bg-secondary p-5 my-5 col justify-content-center">
+    <form [formGroup]="patientsClinicForm"  (ngSubmit)="onSubmit()" novalidate dir="rtl">
+      <h1 style="text-align: center;">إضافة ملف مريض جديد</h1>
+      <div class="form-group">
+      
+        <div>
+            <label for="clinicId">العيادة:</label>
+            <select formControlName="clinicId" id="clinicId" name="clinicId">
+                <option value="">--Please choose an option--</option>
+                <option *ngFor="let clinic of clinics"
+                value="{{clinic.clinicId}}">{{clinic.name}}</option>
+            </select>
+        </div>
+      </div>
+      <input type="submit" value="إضافة" class="py-1 m-2 btn btn-light rounded-0">
+    </form>
+  </div>
+  

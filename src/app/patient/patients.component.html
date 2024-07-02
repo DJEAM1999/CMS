@@ -24,23 +24,38 @@
           <input  class="btn btn-primary rounded-1 w-100" type="submit" value="Search">
          </div>
         </div>  
-        
       </form>
+    </div>
+    </div>
+
+
+    <div *ngIf="patient">
+      <div>
+        {{patient.name}} - {{patient.nationalNo}} - {{patient.passportNo}}
+      </div>
+      
+      <div *ngIf="patient.patientsClinics!.length > 0">
+        <div *ngFor="let file of patient.patientsClinics">
+          <p [routerLink]="['/patientsClinic', patient.patientId, file.clinicId]">
+            {{patient.name}} - {{file.clinic?.name}}
+          </p>
+        </div>
+      </div>
     
-    </div>
+      <p [routerLink]="['/add-patients-clinic', patient.patientId]">Add Clinics Patient</p>
+      
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        تعديل بيانات المريض
+      </button>
+
+      <button type="button" class="btn btn-danger" (click)="deletePatient()">
+        حذف بيانات المريض
+      </button>
+      
+      <app-update-patient *ngIf="patient" [patient]="patient"></app-update-patient>
     </div>
 
-<div *ngIf="patientClinics">
-  <div *ngFor="let file of patientClinics" >
-    <p>{{file.patient.name}}</p>
-  </div>
-  <!-- <h1>{{patientClinics.patient.name}}</h1> -->
-  <!-- *********************** -->
-  
-  <!-- Complete All Details -->
 
- <!-- *********************** -->
-</div>
 
 
 

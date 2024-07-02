@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PatientsClinic } from '../shared/patients-clinic/patiens-clinic.model';
+import { FileStatus, PatientsClinic } from '../shared/patients-clinic/patiens-clinic.model';
 import { PatiensClinicService } from '../shared/patients-clinic/patiens-clinic.service';
+import { UpdatePatientsClinicComponent } from './update-patients-clinic/update-patients-clinic.component';
+
 
 @Component({
   selector: 'app-patients-clinic',
@@ -9,28 +11,22 @@ import { PatiensClinicService } from '../shared/patients-clinic/patiens-clinic.s
   styleUrl: './patients-clinic.component.css'
 })
 export class PatientsClinicComponent {
-  patientName?: string;
-  clinicName?: string;
+  patientId?: number;
+  clinicId?: number;
   patientsClinic?: PatientsClinic
 
   constructor(private route: ActivatedRoute, private service: PatiensClinicService) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.patientName = params.get('patientName')!;
-      this.clinicName = params.get('clinicName')!;
+      this.patientId = parseInt(params.get('patientId')!);
+      this.clinicId = parseInt(params.get('clinicId')!);
     });
-  
-    this.service.getPatientByNameAndClinic(this.patientName!, this.clinicName!).subscribe({
+    console.log(this.patientId, this.clinicId)
+    this.service.getPatientByNameAndClinic(this.patientId!, this.clinicId!).subscribe({
       next: patientsClinic => {
         console.log(patientsClinic)
         this.patientsClinic = patientsClinic!
-        // console.log(patient)
-        if (!patient) {
-          console.log('not found')
-          // Navigate to add new patient page
-          this.router.navigate(['/add-new-patient']);
-        }
       },
       error: err => {
         console.error('Error fetching patient:', err);
@@ -39,5 +35,14 @@ export class PatientsClinicComponent {
     });
   }
 
-
+  fileStatusToString(status: FileStatus){
+    switch (status) {
+      case FileStatus.Closed:
+        return 'Closed';
+      case FileStatus.Open:
+        return 'Open';
+      default:
+        throw new Error('Invalid FileStatus value');
+    }
+  }
 }

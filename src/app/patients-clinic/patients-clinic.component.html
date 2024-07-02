@@ -1,1 +1,13 @@
-<p>patients-clinic works!</p>
+{{patientsClinic?.patient?.name}}<br>
+{{patientsClinic?.clinic?.name}}<br>
+<div>
+    {{fileStatusToString(patientsClinic!.fileStatus!)}}
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        تعديل حالة الملف
+      </button>
+</div>
+
+{{patientsClinic?.entryDate}}<br>
+{{patientsClinic?.exitDate}}<br>
+
+<app-update-patients-clinic [patientsClinic]="patientsClinic!"/>

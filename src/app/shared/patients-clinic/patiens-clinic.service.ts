@@ -12,17 +12,26 @@ export class PatiensClinicService {
 
   constructor(private http: HttpClient) { }
   url: string = environment.apiBaseUrl + '/PatientsClinics'
-  patient: Patient = new Patient()
+  patientsClinic: PatientsClinic = new PatientsClinic()
 
   formsubmitted:boolean = false;
 
-  getPatientByNameAndClinic(name: string, clinicName: string): Observable<PatientsClinic | null> {
-    return this.http.get<PatientsClinic | null>(`${this.url}/by-name-and-clinic`, {
+  getPatientByNameAndClinic(patientId: number, clinicId: number): Observable<PatientsClinic | null> {
+    return this.http.get<PatientsClinic | null>(`${this.url}/by-patientId-and-clinicId`, {
       params: {
-        name: name,
-        clinicName: clinicName
+        patientId: patientId,
+        clinicId: clinicId
       }
     });
+  }
+
+  postPatientsClinic(patientsClinic: PatientsClinic) {
+    // console.log('Here is the Clinic: '+ this.url)
+    return this.http.post(this.url, patientsClinic)
+  }
+
+  putPatientsClinic( fileNo: number,patientsClinic: PatientsClinic) {
+    return this.http.put(this.url + `/${fileNo}`, patientsClinic)
   }
 
 }

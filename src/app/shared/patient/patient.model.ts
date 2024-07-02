@@ -1,9 +1,9 @@
-import { Clinic } from "../clinic/clinic.model";
+import { PatientsClinic } from "../patients-clinic/patiens-clinic.model";
 
 export class Patient {
     public patientId: number = 0;
     public name: string = '';
-    // public cityId: number = 0;
-    // public city: City = new City
+    public nationalNo: number = 0;
+    public passportNo: number = 0;
+    public patientsClinics?: PatientsClinic[];
 }
-
