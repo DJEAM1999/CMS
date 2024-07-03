@@ -28,6 +28,12 @@ export class AddCityFormComponent {
         },
         error: (err) => {
           console.log(err);
+          if (err.status === 409) {
+            this.toastr.error('لا يمكن إضافة مدينة موجودة مسبقا.');
+          } else {
+            console.log(err.message);
+            this.toastr.error('حدث خطأ غير متوقع');
+          }
         },
       });
     }
