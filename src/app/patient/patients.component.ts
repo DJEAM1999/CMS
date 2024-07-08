@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { PatientService } from '../shared/patient/patient.service';
 import { Patient } from '../shared/patient/patient.model';
 import { ClinicService } from '../shared/clinic/clinic.service';
@@ -7,13 +7,16 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { PatientsClinic } from '../shared/patients-clinic/patiens-clinic.model';
 
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+
 @Component({
   selector: 'app-patients',
   templateUrl: './patients.component.html',
   styles:[]
 })
 export class PatientsComponent {
- 
   constructor(
     public service: PatientService,
     public clinicService: ClinicService,
@@ -25,9 +28,41 @@ export class PatientsComponent {
   patient?: Patient | null;
   clinics: Clinic[] = [];
 
-  
+  displayedColumns: string[] = ['id', 'name', 'cityName', 'actions'];
+  dataSource = new MatTableDataSource<Patient>();
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
   ngOnInit(): void {
     this.loadClinics();
+
+    // هدا يبي التعديل
+    // this.service.refreshList2().subscribe({
+    //   next:(clinics:Clinic[]) =>{
+    //     this.dataSource.data = clinics;
+    //     this.dataSource.paginator = this.paginator;
+    //     this.dataSource.sort = this.sort;
+    //   },
+    //   error: (err) => {
+    //     console.error('Error fetching cities:', err);
+    //   },
+    // });
+
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  //هدي لترقيم الجدول
+  getIndex(i: number): number {
+    return i + 1 + (this.paginator.pageIndex * this.paginator.pageSize);
   }
 
   loadClinics(): void {

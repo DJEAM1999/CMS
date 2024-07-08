@@ -15,7 +15,7 @@ export class PatientService {
 
   formsubmitted:boolean = false;
 
- 
+
   getPatientByName(name: string): Observable<Patient | null> {
     return this.http.get<Patient | null>(`${this.url}/by-name`, {
       params: {
@@ -35,29 +35,5 @@ export class PatientService {
     deletePatient(patientId: number) {
     return this.http.delete(this.url + '/' + patientId)
   }
-
-  // getClinic(clinicId: number){
-  //   this.http.get(this.url + `/${clinicId}`)
-  //   .subscribe({
-  //     next: res => {
-  //       this.clinic = res as Clinic;
-  //       console.log(res);
-  //       console.log(this.clinic.clinicId);
-  //     },
-  //     error: err => console.log(err)
-  //   })
-  // }
-
-  // putClinic(clinicId: number) {
-  //   console.log(this.clinic)
-  //   console.log('Here the Clinic: '+ this.url + `/${clinicId}`)
-  //   return this.http.put(this.url + `/${clinicId}`, this.clinic)
-  // }
-
-  // postClinic() {
-  //   // console.log('Here is the Clinic: '+ this.url)
-  //   return this.http.post(this.url, this.clinic)
-  // }
-
 
 }
