@@ -20,6 +20,10 @@ import { AddPatientsClinicComponent } from './patients-clinic/add-patients-clini
 import { UpdatePatientsClinicComponent } from './patients-clinic/update-patients-clinic/update-patients-clinic.component';
 import { PatientsClinicComponent } from './patients-clinic/patients-clinic.component';
 import { UpdatePatientComponent } from './patient/update-patient/update-patient.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MaterialModule } from './material/material.module';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -30,13 +34,12 @@ import { UpdatePatientComponent } from './patient/update-patient/update-patient.
     ClinicsComponent,
     ClinicFormComponent,
     PatientsComponent,
-    // AddClinicComponent,
     AddClinicComponent,
-    AddPatientComponent, 
-    AddPatientsClinicComponent, 
+    AddPatientComponent,
+    AddPatientsClinicComponent,
     UpdatePatientsClinicComponent,
     PatientsClinicComponent,
-    UpdatePatientComponent
+    UpdatePatientComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,9 +49,11 @@ import { UpdatePatientComponent } from './patient/update-patient/update-patient.
     RouterModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MaterialModule,
+    //
   ],
-  providers: [],
+  providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

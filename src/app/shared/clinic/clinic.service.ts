@@ -39,11 +39,14 @@ export class ClinicService {
       error: err => console.log(err)
     })
   }
+  refreshList2(): Observable<Clinic[]> {
+    return this.http.get<Clinic[]>(this.url);
+  }
 
   getClinics(): Observable<Clinic[]> {
     return this.http.get<Clinic[]>(this.url);
   }
-  
+
   getClinic(clinicId: number){
     this.http.get(this.url + `/${clinicId}`)
     .subscribe({

@@ -12,7 +12,7 @@ import { PatientsClinic } from '../../shared/patients-clinic/patiens-clinic.mode
 @Component({
   selector: 'app-add-patients-clinic',
   templateUrl: './add-patients-clinic.component.html',
-  styleUrl: './add-patients-clinic.component.css'
+  styles:[]
 })
 export class AddPatientsClinicComponent implements OnInit{
   clinics: Clinic[] = [];
@@ -55,7 +55,7 @@ export class AddPatientsClinicComponent implements OnInit{
     if (this.patientsClinicForm!.valid) {
       this.patientsClinic.clinicId = parseInt(this.patientsClinicForm!.value.clinicId, 10);
       console.log( this.patientsClinic )
-      console.log( this.patientsClinic.patientId, 
+      console.log( this.patientsClinic.patientId,
         this.patientsClinic.clinicId);
 
       this.service.postPatientsClinic(this.patientsClinic)
@@ -69,10 +69,10 @@ export class AddPatientsClinicComponent implements OnInit{
           if (err.status === 409) { // Check for conflict status code
             this.router.navigate([
               '/patientsClinic',
-              this.patientsClinic.patientId, 
+              this.patientsClinic.patientId,
               this.patientsClinic.clinicId
             ]);
-           
+
             // this.router.navigate(['/duplicate-entry']); // Navigate to duplicate entry page
             console.log('heeeeere')
           } else {
@@ -94,15 +94,15 @@ export class AddPatientsClinicComponent implements OnInit{
   //         this.Location.back();
   //       },
   //       error: (err) => {
-  //         console.log( this.service.patientsClinic.patient?.patientId, 
+  //         console.log( this.service.patientsClinic.patient?.patientId,
   //           this.service.patientsClinic.clinic?.clinicId);
   //         if (err.status === 409) { // Check for conflict status code
   //           this.router.navigate([
   //             '/patientsClinic',
-  //             this.service.patientsClinic.patientId, 
+  //             this.service.patientsClinic.patientId,
   //             this.service.patientsClinic.clinicId
   //           ]);
-           
+
   //           // this.router.navigate(['/duplicate-entry']); // Navigate to duplicate entry page
   //           console.log('heeeeere')
   //         } else {

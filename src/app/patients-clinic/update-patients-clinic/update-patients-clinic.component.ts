@@ -11,7 +11,7 @@ import { PatiensClinicService } from '../../shared/patients-clinic/patiens-clini
 @Component({
   selector: 'app-update-patients-clinic',
   templateUrl: './update-patients-clinic.component.html',
-  styleUrl: './update-patients-clinic.component.css'
+  styles:[]
 })
 
 
@@ -41,13 +41,13 @@ export class UpdatePatientsClinicComponent implements OnInit{
     { label: 'Closed', value: 0 },
     { label: 'Open', value: 1 },
   ];
-  
+
   onSubmitUpdate() {
     if (this.updatePatientsClinicForm!.valid) {
       const updatedStatus = parseInt(this.updatePatientsClinicForm!.value.fileStatus)
       if(this.patientsClinic.fileStatus != updatedStatus){
         this.patientsClinic.fileStatus = updatedStatus;
-        
+
         if(updatedStatus == 0){
           this.patientsClinic.exitDate = new Date();
         }else{

@@ -32,6 +32,10 @@ export class CityService {
     });
   }
 
+  refreshList2(): Observable<City[]> {
+    return this.http.get<City[]>(this.url);
+  }
+  
   getCity(cityId: number) {
     this.http.get(this.url + `/${cityId}`).subscribe({
       next: (res) => {
@@ -73,5 +77,4 @@ export class CityService {
   log(arg0: string) {
     throw new Error('Method not implemented.');
   }
-
 }

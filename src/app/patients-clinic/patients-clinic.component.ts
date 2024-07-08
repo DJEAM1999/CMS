@@ -8,7 +8,7 @@ import { UpdatePatientsClinicComponent } from './update-patients-clinic/update-p
 @Component({
   selector: 'app-patients-clinic',
   templateUrl: './patients-clinic.component.html',
-  styleUrl: './patients-clinic.component.css'
+  styles:[]
 })
 export class PatientsClinicComponent {
   patientId?: number;

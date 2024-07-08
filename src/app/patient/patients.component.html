@@ -1,64 +1,67 @@
 <div class="container align-self-center pt-5">
-   
-    <div class="bg-dark-subtle row p-2 rounded-2">
-      <!-- <div class="col-4">
+  <div class="bg-dark-subtle row p-2 rounded-2">
+    <!-- <div class="col-4">
         <div class="btn btn-primary rounded-1 w-100"><a href="#" class="text-light text-decoration-none">Add New Patient</a></div>
       </div> -->
-     
-      <form #form="ngForm" (submit)="onSubmit(form)" novalidate autocomplete="off">
-        <div class="row">
-         <div class="col-5">
-          <input type="text" class="p-1 rounded-1 w-100 border-0" placeholder="Search for a Patient..."
-          [(ngModel)]="patientName" name="patientName">
-         </div>
-         <div class="col-4">
-          <!-- <select 
-            class="w-75" 
-            aria-label="Select Clinic" 
-            [(ngModel)]="clinicName" 
-            name="clinicName">
-            <option *ngFor="let clinic of clinics" [value]="clinic.name">{{clinic.name}}</option>
-          </select> -->
-         </div>
-         <div class="col-3">
-          <input  class="btn btn-primary rounded-1 w-100" type="submit" value="Search">
-         </div>
-        </div>  
-      </form>
-    </div>
-    </div>
 
-
-    <div *ngIf="patient">
-      <div>
-        {{patient.name}} - {{patient.nationalNo}} - {{patient.passportNo}}
-      </div>
-      
-      <div *ngIf="patient.patientsClinics!.length > 0">
-        <div *ngFor="let file of patient.patientsClinics">
-          <p [routerLink]="['/patientsClinic', patient.patientId, file.clinicId]">
-            {{patient.name}} - {{file.clinic?.name}}
-          </p>
+    <form
+      #form="ngForm"
+      (submit)="onSubmit(form)"
+      novalidate
+      autocomplete="off">
+      <div class="row">
+        <div class="col-5">
+          <input
+            type="text"
+            class="p-1 rounded-1 w-100 border-0"
+            placeholder="Search for a Patient..."
+            [(ngModel)]="patientName"
+            name="patientName"
+          />
+        </div>
+        <div class="col-4">
+        </div>
+        <div class="col-3">
+          <input
+            class="btn btn-primary rounded-1 w-100"
+            type="submit"
+            value="Search"
+          />
         </div>
       </div>
-    
-      <p [routerLink]="['/add-patients-clinic', patient.patientId]">Add Clinics Patient</p>
-      
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        تعديل بيانات المريض
-      </button>
+    </form>
+  </div>
+</div>
 
-      <button type="button" class="btn btn-danger" (click)="deletePatient()">
-        حذف بيانات المريض
-      </button>
-      
-      <app-update-patient *ngIf="patient" [patient]="patient"></app-update-patient>
+<div *ngIf="patient">
+  <div>
+    {{ patient.name }} - {{ patient.nationalNo }} - {{ patient.passportNo }}
+  </div>
+
+  <div *ngIf="patient.patientsClinics!.length > 0">
+    <div *ngFor="let file of patient.patientsClinics">
+      <p [routerLink]="['/patientsClinic', patient.patientId, file.clinicId]">
+        {{ patient.name }} - {{ file.clinic?.name }}
+      </p>
     </div>
+  </div>
 
+  <p [routerLink]="['/add-patients-clinic', patient.patientId]">
+    Add Clinics Patient
+  </p>
 
+  <button
+    type="button"
+    class="btn btn-primary"
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModal"
+  >
+    تعديل بيانات المريض
+  </button>
 
+  <button type="button" class="btn btn-danger" (click)="deletePatient()">
+    حذف بيانات المريض
+  </button>
 
-
-
-
-
+  <app-update-patient *ngIf="patient" [patient]="patient"></app-update-patient>
+</div>
